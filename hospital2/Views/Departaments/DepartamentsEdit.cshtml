@@ -1,0 +1,27 @@
+﻿@model hospital2.Models.Skil
+@{
+    ViewBag.Title = "ImageEdit";
+}
+
+<h2>ImageEdit</h2>
+@using (Html.BeginForm("DepartamentsEdit", "Departaments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.DisplayFor(s => s.Name, "Назва")
+    <br />
+    @Html.EditorFor(s => s.Name)
+
+    @Html.DisplayFor(s => s.Text, "Текст")
+    <br />
+    @Html.EditorFor(s => s.Text)
+    <p>Головний лікар</p>
+    <br />
+    @Html.CheckBoxFor(s => s.IsMain)
+    <div>Зображення</div>
+    <div>
+        <input type="file" name="upload" />
+    </div>
+        <p>
+            <input type="submit" value="Редагувати" />
+        </p>
+}
+

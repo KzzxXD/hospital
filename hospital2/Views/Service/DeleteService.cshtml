@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "DeleteService";
+}
+
+@model hospital2.Models.Service
+@using (Html.BeginForm("DeleteService", "Service", FormMethod.Post)) { 
+<p>Назва</p>
+@Html.HiddenFor(m => m.Id)
+@Html.DisplayFor(m => m.NameService)
+<p>Опис</p>
+@Html.DisplayFor(m => m.TextService)
+<p>FAFA</p>
+<div class="@Html.DisplayFor(m => m.FaFaIcon)"></div>
+<br />
+    <input type="submit" value="Видалити"/>
+}

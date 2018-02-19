@@ -1,0 +1,53 @@
+﻿@model hospital2.Models.NewsIndexView
+@using hospital2.Helpers
+@{
+    ViewBag.Title = "Новини";
+}
+<section >
+    <div class="container">
+        <div class="news-block">
+            <div class="itm-flex">
+                <h2>Новини</h2>
+                @if (User.IsInRole("admin"))
+                {
+                    <a class="btn-create" href="@Url.Action("Create", "News")">&#10010;</a>
+                }
+         
+            </div>
+            <div class="news-grid">
+                @foreach (var p in Model.Posts)
+                {
+                    <div class="news1">
+                        <br />
+                        <div class="news-body">
+                           <div class="img-size">
+                               <img class="img-width-height" src="@Url.Action("../Content/news/ " + p.Image)" />
+                           </div>                           
+                        </div>
+                        <div class="text-pos">
+                            <h2>@Html.ActionLink(p.Name, "PostView", new { p.Id }, "News")</h2>
+                            <p>@p.SmalText</p>
+                            <p>@p.Date</p>
+                        </div>
+
+                        <a class="read-on" href="@Url.Action("PostView", new {p.Id })"><span>Детальніше</span></a>
+                        @if (User.IsInRole("admin"))
+                        {
+                        <div class="del-ed-pos">
+                            <a class="btn btn-close" href="@Url.Action("Delete/" + p.Id, "News")">&#10006;</a>
+
+                            <a class="btn btn-ed" href="@Url.Action("EditPost/" +  p.Id , "News")">	&#9998; </a>
+                        </div>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="btn-group-flex">
+                <div class="btn-group">
+                    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br />

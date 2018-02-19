@@ -1,0 +1,19 @@
+﻿@model IEnumerable<hospital2.Models.Skil>
+@{
+    ViewBag.Title = "Doctors";
+
+}
+<div>
+    @foreach (hospital2.Models.Skil s in ViewBag.db1)
+    {
+        <div class="width-pos">
+            <h3>@s.Name</h3>
+            <img style="width:150px;" src="@Url.Action("../Content/img/ " + s.Image)" />
+
+            <br />
+            @Html.ActionLink("Детальніше", "Details", "Home", new { @class = "btn-details" })
+        </div>
+    }
+
+</div>
+

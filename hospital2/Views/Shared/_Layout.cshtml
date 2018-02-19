@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/font-awesome.min.css")
+
+</head>
+<body>
+    <div id="main">
+        <header>          
+                <nav id="menu" >
+                    <div id="btn-open">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>                  
+                    <ul id="mySidenav" class="sidenav">
+                        <div class="closeBtn-pos">
+                            <span id="closeBtn">×</span>    
+                        </div>
+                        <li>@Html.ActionLink("Головна", "Index", "Home" )</li>
+                        <li>@Html.ActionLink("Новини", "Index", "News")</li>
+                        <li>@Html.ActionLink("Лікарі", "Index", "Departaments")</li>
+                        <li>@Html.ActionLink("Контакти", "Contact", "Home")</li>                     
+                        @Html.Partial("_LoginPartial")                   
+                    </ul>
+                </nav>
+    
+        </header>
+    </div>
+
+
+
+    <div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Today - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    
+    @Scripts.Render("~/Scripts/menu.js")
+    @RenderSection("scripts", required: false)
+    
+</body>
+</html>

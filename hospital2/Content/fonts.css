@@ -1,0 +1,12 @@
+﻿@font-face {
+    font-family: 'arimo-bold';
+    src: url('../fonts/arimo-bold.ttf');
+}
+@font-face {
+    font-family: 'arimo-regular';
+    src: url('../fonts/arimo-regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'russoone-regular';
+    src: url('../fonts/russoone-regular.ttf') format('truetype');
+}

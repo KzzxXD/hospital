@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "CreatePost";
+}
+
+
+<div class="container">
+    <h2>CreatePost</h2>
+    @model hospital2.Models.Post
+    @using (Html.BeginForm("Create", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.LabelFor(m => m.Name, "Назва поста")
+        <br />
+        @Html.EditorFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+        <br />
+        <br />
+        @Html.LabelFor(m => m.SmalText, "Короткий опис")
+        @Html.EditorFor(m => m.SmalText)
+        @Html.ValidationMessageFor(m => m.SmalText)
+        <br />
+        <br />
+
+        @Html.LabelFor(m => m.Text, "Опис")
+        <br />
+        @Html.TextAreaFor(m => m.Text, new { @class = "textarea" })
+        @Html.ValidationMessageFor(m => m.Text)
+        <br />
+        <br />
+        @Html.LabelFor(m => m.Date, "Дата")
+        <br />
+        @Html.EditorFor(m => m.Date)
+        @Html.ValidationMessageFor(m => m.Date)
+        <br />
+        <br />
+        <p>Зображення</p>
+        <input type="file" name="upload" required/>
+        <br />
+        <input type="submit" value="Створити" />
+    }
+
+</div>

@@ -1,0 +1,29 @@
+﻿@model hospital2.Models.Service
+
+@{
+    ViewBag.Title = "EditService";
+}
+
+<h2>@Model.Id</h2>
+
+@using(Html.BeginForm("EditService", "Service", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Id);
+    <p>
+        @Html.LabelFor(m => m.NameService, "Name")
+        <br />
+        @Html.EditorFor(m => m.NameService)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.TextService, "Text")
+        <br />
+        @Html.EditorFor(m => m.TextService)
+    </p>
+
+    <br />
+
+    <p>Faвіfa</p>
+    @Html.EditorFor(m => m.FaFaIcon)
+    <input type="submit" value="Змінити"/>
+}
+

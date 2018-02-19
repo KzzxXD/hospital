@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "PostView";
+}
+
+<div class="container">   
+    @model hospital2.Models.Post
+    @Html.ActionLink("Змінити статтю", "EditPost", new { Model.Id}, "News")
+    <h2>@Model.Name</h2>
+    <img style="width:100%;" src="@Url.Action("../Content/news/ " + Model.Image)" />
+    <p>@Model.Text</p>
+    <p>Data @Model.Date</p>
+</div>
+

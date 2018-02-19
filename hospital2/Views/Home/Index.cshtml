@@ -1,0 +1,101 @@
+﻿@model IEnumerable<hospital2.Models.Skil>
+@{
+    ViewBag.Title = "Головна";
+}
+
+
+
+<section id="bg12">
+    <div class="text-bg1">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <div class="text"><h1>Медичний центр <br /> Medhouse</h1></div>
+            </div>
+        </div>
+    </div>
+    <video autoplay muted loop id="myVideo">
+    <source src="~/Content/Microscope_5__Scientist__Videvo.mov"  type="video/mp4">
+</video>
+</section>
+<section>
+    <div class="container">
+        <div class="itm-flex">
+            <h2>Наші послуги</h2>
+@if (User.IsInRole("admin"))
+{
+            <a class="btn btn-create" href="@Url.Action("ServiceCreate", "Service")">&#10010;</a>
+}
+        </div>
+        <div class="services">
+            @foreach (hospital2.Models.Service i in ViewBag.db1Service)
+            {  <div class="flex-services-main">
+                   <div class="fafa-icont @i.FaFaIcon"></div>
+                   <div class="services-flex">
+                       <h3 class="h3-width">@i.NameService</h3>
+                       <p class="p-width">@i.TextService</p>
+                       @if (User.IsInRole("admin"))
+                       {
+                        <div class="flex-btn-service">
+                            <a class="btn btn-ed" href="@Url.Action("EditService/" +  i.Id , "Service")">	&#9998; </a>
+                            <a class="btn btn-close btn-marg" href="@Url.Action("DeleteService/" + i.Id, "Service")">&#10006;</a>
+                        </div>
+                       }
+                   </div>
+            </div>
+               
+            }
+        </div>
+        <div class="our-services">
+            <div class="itm-services">
+
+            </div>
+        </div>        
+    </div>
+</section>
+<section id="bg-home-help">
+    <div class="container">
+        <div class="flex-text-home">
+            <div class="text-flex">
+                <h2>як ми можемо <span>допомогти</span></h2>
+                <p>
+                    Our doctors are able to fix any issue at no worries for <br />
+                    you. Your smile will be perfect!
+                </p>
+                <a href="#">Contact us</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="bg2">
+    <div class="container">
+        <div class="itm-flex">
+            <h2>Наші лікарі</h2>
+            @if (User.IsInRole("admin")){
+            <a class="btn btn-create" href="@Url.Action("DepartamentsCreate", "Departaments")">&#10010;</a>     
+            }       
+        </div>   
+        <div class="flex">            
+                @foreach(hospital2.Models.Skil s in ViewBag.db1)
+                {
+                    <div class="width-pos">
+                        @if (User.IsInRole("admin"))
+                        {
+                       <div class="buttons">
+                           <a class="btn btn-close" href="@Url.Action("DepartamentsRemove/" + s.Id, "Departaments")">&#10006;</a>
+                           <a class="btn btn-ed" href="@Url.Action("DepartamentsEdit/" + s.Id, "Departaments")">&#9998; </a>
+                       </div>
+                        }
+                        <h3>@s.Name</h3>
+                        <img style="width:150px;" src="@Url.Action("../Content/img/ " + s.Image)" />
+                        <br />
+                        @Html.ActionLink("Детальніше", "Details", "Home", new { @class = "btn-details" })
+                    </div>
+                }
+                
+            
+       </div>
+        @Html.ActionLink("Всі лікарі", "Doctors", "Home")
+    </div>
+    <br />
+</section>
+

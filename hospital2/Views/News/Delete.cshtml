@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "DeleteView";
+}
+
+@model hospital2.Models.Post 
+    <h2>Видалення поста @Model.Name</h2>
+<p>Назва</p>
+@Html.HiddenFor(m => m.Id)
+@Html.DisplayFor(m => m.Name)
+<p>Короткий опис</p>
+@Html.DisplayFor(m => m.SmalText)
+<p>Опис</p>
+@Html.DisplayFor(m => m.Text)
+<p>Дата добавлення</p>
+@Html.DisplayFor(m => m.Date)
+<br />
+@using (Html.BeginForm())
+{
+
+    <input type="submit" value="Видалити" />
+
+}

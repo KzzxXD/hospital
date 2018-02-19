@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Редагування статті";
+    
+}
+
+    @model hospital2.Models.Post
+<div class="container">
+    @using (Html.BeginForm("EditPost", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        
+        @Html.HiddenFor(m => m.Id)
+        <p>
+            @Html.LabelFor(m => m.Name, "Назва поста")
+            <br />
+            @Html.EditorFor(m => m.Name)
+            @Html.ValidationMessageFor(m => m.Name)
+
+        </p>
+        <p>
+            @Html.LabelFor(m => m.SmalText, "Короткий опис")
+            <br />
+            @Html.EditorFor(m => m.SmalText)
+            @Html.ValidationMessageFor(m => m.SmalText)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Text, "Опис")
+            <br />
+            @Html.TextAreaFor(m => m.Text, new { @class = "textarea" })
+            @Html.ValidationMessageFor(m => m.Text)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Date, "Дата")
+            <br />
+            @Html.EditorFor(m => m.Date)
+            
+        </p>
+        <p>Зображення</p>
+        <br />
+        <input type="file" name="upload" required/>
+        <br />
+        <input type="submit" id="btn-edit" value="Відправити" />
+
+
+
+    }
+</div>
+
+

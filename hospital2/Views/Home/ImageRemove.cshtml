@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "ImageRemove";
+}
+
+
+
+@model hospital2.Models.Skil
+@using (Html.BeginForm())
+{
+
+<h2>Видалення поста @Model.Name</h2>
+<p>Назва</p>
+@Html.HiddenFor(m => m.Id)
+@Html.DisplayFor(m => m.Name)
+<p>Опис</p>
+@Html.DisplayFor(m => m.Text)
+<p>Зображення</p>
+@Html.DisplayFor(m => m.Image)
+<br />
+
+    <input type="submit" value="Видалити" />
+
+}

@@ -1,0 +1,34 @@
+﻿@model hospital2.Models.Skil
+@{
+    ViewBag.Title = "CreateImg";
+}
+
+<h2>CreateImg</h2>
+
+@using(Html.BeginForm("Image", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{   @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>
+            Добавити зображення
+        </legend>
+        <div>Назва</div>
+        <div class="editor-label">
+
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <p>Текст</p>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.Text)
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+        <div>Файл зображення</div>
+        <div>
+            <input type="file", name="uploadImage" />
+        </div>
+        <p>
+            <input type="submit", value="Добавити"  required/>
+        </p>
+    </fieldset>
+}
